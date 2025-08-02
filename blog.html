@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Joyce Santos</title>
+    <meta name="description" content="Artigos e notícias sobre Direito do Consumidor - Joyce Santos">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo.png" alt="Joyce Santos Logo" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#about" class="nav-link">Sobre Mim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#areas" class="nav-link">Áreas de Atuação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link active">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/login.php" class="nav-link login-link">
+                            <i class="fas fa-user"></i> Login
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <h1>Blog Jurídico</h1>
+                <p>Artigos, notícias e insights sobre Direito do Consumidor para mantê-lo informado sobre seus direitos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-main">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Main Content -->
+                <main class="blog-content">
+                    <!-- Filters -->
+                    <div class="blog-filters">
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-category="all">Todos</button>
+                            <button class="filter-tab" data-category="noticias">Notícias</button>
+                            <button class="filter-tab" data-category="artigos">Artigos</button>
+                            <button class="filter-tab" data-category="dicas">Dicas</button>
+                            <button class="filter-tab" data-category="jurisprudencia">Jurisprudência</button>
+                        </div>
+                        
+                        <div class="filter-search">
+                            <input type="text" id="search-posts" placeholder="Buscar artigos...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Posts Grid -->
+                    <div class="blog-posts-grid" id="blog-posts-container">
+                        <!-- Posts will be loaded here dynamically -->
+                        <div class="blog-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Carregando artigos...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="blog-pagination" id="blog-pagination" style="display: none;">
+                        <button class="pagination-btn" id="prev-page" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Anterior
+                        </button>
+                        <div class="pagination-info">
+                            <span id="page-info">Página 1 de 1</span>
+                        </div>
+                        <button class="pagination-btn" id="next-page">
+                            Próxima
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </main>
+                
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Featured Post -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Post em Destaque</h3>
+                        <div class="featured-post" id="featured-post">
+                            <div class="featured-loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categorias</h3>
+                        <ul class="categories-list">
+                            <li><a href="#" data-category="noticias">Notícias <span>(0)</span></a></li>
+                            <li><a href="#" data-category="artigos">Artigos <span>(0)</span></a></li>
+                            <li><a href="#" data-category="dicas">Dicas <span>(0)</span></a></li>
+                            <li><a href="#" data-category="jurisprudencia">Jurisprudência <span>(0)</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Newsletter -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Newsletter</h3>
+                        <div class="newsletter-widget">
+                            <p>Receba atualizações sobre direito do consumidor diretamente no seu email</p>
+                            <form class="newsletter-form" id="newsletter-form">
+                                <input type="email" placeholder="Seu email" required>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Inscrever
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact CTA -->
+                    <div class="sidebar-widget">
+                        <div class="contact-cta">
+                            <h3>Precisa de Ajuda?</h3>
+                            <p>Entre em contato para uma consulta personalizada sobre seu caso</p>
+                            <a href="index.html#contact" class="btn btn-primary">
+                                <i class="fas fa-phone"></i>
+                                Fale Comigo
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Joyce Santos Logo" class="footer-logo-img">
+                        <h3>Joyce Santos</h3>
+                    </div>
+                    <p>Advogada especialista em Direito do Consumidor, dedicada a defender seus direitos com excelência e compromisso.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#home">Início</a></li>
+                        <li><a href="index.html#about">Sobre Mim</a></li>
+                        <li><a href="index.html#areas">Áreas de Atuação</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> santosjoyce56@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Joyce Santos. Todos os direitos reservados.</p>
+                <p>OAB/SP 123.456</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/blog.js"></script>
+</body>
+</html>
