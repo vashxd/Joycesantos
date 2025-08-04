@@ -3,13 +3,13 @@
     "description": "Website da Advogada Joyce Santos - Especialista em Direito do Consumidor",
     "type": "project",
     "require": {
-        "php": ">=8.0",
+        "php": "^8.3",
         "ext-pdo": "*",
         "ext-pgsql": "*"
     },
     "config": {
         "platform": {
-            "php": "8.2"
+            "php": "8.3"
         }
     },
     "scripts": {

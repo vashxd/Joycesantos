@@ -41,7 +41,7 @@ try {
     $statements = array_filter(
         array_map('trim', explode(';', $sql)),
         function($stmt) {
-            return !empty($stmt) && !str_starts_with($stmt, '--');
+            return !empty($stmt) && strpos($stmt, '--') !== 0;
         }
     );
     
