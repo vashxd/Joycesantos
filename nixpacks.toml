@@ -1,0 +1,11 @@
+[providers]
+php = "8.2"
+
+[phases.build]
+dependsOn = ["install"]
+
+[phases.install]
+cmds = ["echo 'PHP project ready'"]
+
+[start]
+cmd = "php -S 0.0.0.0:$PORT -t ."

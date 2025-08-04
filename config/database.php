@@ -1,10 +1,22 @@
 <?php
 // PostgreSQL Database configuration
-$host = 'localhost';
-$port = '5432';
-$dbname = 'joyce_santos_website';
-$username = 'postgres';
-$password = '12345678';
+// Use Railway environment variables or fallback to local development
+$host = $_ENV['PGHOST'] ?? $_SERVER['PGHOST'] ?? 'localhost';
+$port = $_ENV['PGPORT'] ?? $_SERVER['PGPORT'] ?? '5432';
+$dbname = $_ENV['PGDATABASE'] ?? $_SERVER['PGDATABASE'] ?? 'joyce_santos_website';
+$username = $_ENV['PGUSER'] ?? $_SERVER['PGUSER'] ?? 'postgres';
+$password = $_ENV['PGPASSWORD'] ?? $_SERVER['PGPASSWORD'] ?? '12345678';
+
+// Railway also provides DATABASE_URL
+if (isset($_ENV['DATABASE_URL']) || isset($_SERVER['DATABASE_URL'])) {
+    $database_url = $_ENV['DATABASE_URL'] ?? $_SERVER['DATABASE_URL'];
+    $url_parts = parse_url($database_url);
+    $host = $url_parts['host'];
+    $port = $url_parts['port'] ?? '5432';
+    $dbname = ltrim($url_parts['path'], '/');
+    $username = $url_parts['user'];
+    $password = $url_parts['pass'];
+}
 
 // PDO options
 $options = [

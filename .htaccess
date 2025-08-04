@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# Redirecionar para index.html se for a raiz
+RewriteRule ^$ index.html [L]
+
+# Permitir acesso direto a arquivos existentes
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Permitir acesso direto a diretórios existentes
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Para API, remover .php da URL
+RewriteRule ^api/([^/]+)/?$ api/$1.php [L,QSA]
+
+# Para admin, permitir acesso aos arquivos PHP
+RewriteRule ^admin/([^/]+)/?$ admin/$1.php [L,QSA]
+
+# Para outras rotas, tentar encontrar o arquivo correspondente
+RewriteRule ^([^/]+)/?$ $1.html [L]
+RewriteRule ^([^/]+)/?$ $1.php [L]
